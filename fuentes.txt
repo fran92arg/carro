@@ -1,0 +1,15 @@
+fetch
+https://www.freecodecamp.org/espanol/news/tutorial-de-fetch-api-en-javascript-con-ejemplos-de-js-fetch-post-y-header/
+
+json server
+https://github.com/typicode/json-server
+npm i json-server
+json-server --watch db.json --port 3004
+
+try catch async await
+https://javascript.info/async-await
+
+problema node navegador
+https://stackoverflow.com/questions/68962666/trouble-with-node-fetch-javascript/68963164#68963164?newreg=c597a357298043bebe0b9d3a9844e414
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
