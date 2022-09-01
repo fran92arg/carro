@@ -9,13 +9,15 @@
   <!-- bootstrap -->
   <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.css">
   <title>Carrito</title>
+  <link rel="icon" type="image/x-icon" href="img/logo.jpg">
 </head>
 <body >
    
   <div class="container">
-     <h1>Todo por 2 pesos</h1>
+    <h1>Sporting</h1>
+    <h3>La mayor variedad en calzado deportivo</h3>
     <div class="row" id="lista">
-
+      <!-- ca se listan los productos -->
     </div>
 
     <div class="row"> 
@@ -34,12 +36,15 @@
   </div>
 <!-- el template no se carga, permanece oculto -->
   <template id="boxProducto"> 
-    <div class="card " >
-      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-      <div class="card-body">
-        <h5>Nombre</h5>
-        <p>precio</p>
-        <button class="btn btn-primary">Agregar</button>
+    <div class="col-12 mb-2 col-md-4">
+      <div class="card" >
+        <img class="card-img-top" src="..." alt="Card image cap" >
+        <div class="card-body">
+          <h5>Nombre</h5>
+          <h6>Marca</h6>
+          <p>precio</p>
+          <button class="btn btn-primary">Agregar</button>
+        </div>
       </div>
     </div>
   </template>

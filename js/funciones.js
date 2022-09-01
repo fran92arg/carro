@@ -32,7 +32,9 @@ const muestraElem=datosDOM =>{
   datosDOM.forEach(producto => {
     //console.log(producto)
     template.querySelector('h5').textContent = producto.nombre//al h5 de la plantilla le pongo el nombre
+    template.querySelector('h6').textContent = producto.marca//al h5 de la plantilla le pongo el nombre
     template.querySelector('p').textContent = producto.precio
+    template.querySelector('img').setAttribute('src',producto.img)
     template.querySelector('button').dataset.id=producto.id//le agrego al div del boton el id producto
     const prodTemporal=template.cloneNode(true)//se clona el arbol de nodos del objeto
     productoHTML.appendChild(prodTemporal)
