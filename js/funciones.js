@@ -5,23 +5,23 @@
 //     .then(response => response.json())  // convertir a json
 //     .then(json => console.log(json))    //imprimir los datos en la consola
 //     .catch(err => console.log('Solicitud fallida', err)); // Capturar errores.
-
+//console.log(productos)
 //funcion para hacer fetch del json
-const traerDatos = async ()=>{
-  try {
-    const resConsulta= await fetch('http://localhost:3000/productos')
-    const datos= await resConsulta.json()
-    muestraElem(datos)
-    console.log(datos)
-  }
-  catch (error){
-    alert("Error fetch")
-  }
-}
-//invoco el fetch de datos apenas se acrga la pagina
-document.addEventListener('DOMContentLoaded', ()=>{ //no sirve usar onload
-  traerDatos() 
-})
+// const traerDatos = async ()=>{
+//   try {
+//     const resConsulta= await fetch('http://localhost:3000/productos')
+//     const datos= await resConsulta.json()
+//     muestraElem(datos)
+//     console.log(datos)
+//   }
+//   catch (error){
+//     alert("Error fetch")
+//   }
+// }
+// //invoco el fetch de datos apenas se acrga la pagina
+// document.addEventListener('DOMContentLoaded', ()=>{ //no sirve usar onload
+//   traerDatos() 
+// })
 
 const lista=document.getElementById('lista')//el row donde van los productos
 const template=document.getElementById('boxProducto').content//el template de cada producto
@@ -39,7 +39,7 @@ const muestraElem=datosDOM =>{
   })
   lista.appendChild(productoHTML)
 }
-
+muestraElem(productos)
 //funciones del carrito
 var carro={
 
@@ -49,8 +49,8 @@ lista.addEventListener('click',evento =>{
   agregoCarro(evento)
  })
  const agregoCarro=ev =>{
-  console.log(ev.target.tagName)
-  console.log(ev.target.tagName==="BUTTON")
+  //console.log(ev.target.tagName)
+  //console.log(ev.target.tagName==="BUTTON")
   if(ev.target.tagName==="BUTTON"){
     console.log(ev.target.parentElement)
   }
