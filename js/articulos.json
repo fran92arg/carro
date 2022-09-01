@@ -14,6 +14,11 @@
       "nombre":"Casa",
       "precio": 10000000,
       "id": 3
+    },
+    {
+      "nombre":"Ropa",
+      "precio": 1000,
+      "id": 4
     }
   ]
 }
