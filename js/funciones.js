@@ -24,36 +24,79 @@
 // })
 
 const lista=document.getElementById('lista')//el row donde van los productos
-const template=document.getElementById('boxProducto').content//el template de cada producto
+const plantillaCard=document.getElementById('boxProducto').content//el plantillaCard de cada producto
+const plantillaFondo=document.getElementById('fondoTabla').content
+const plantillaFila=document.getElementById('filaProd').content
+console.log(plantillaFila)
+const fila=document.getElementById('prodCarro')
+const fondo=document.getElementById('fondo')
 const productoHTML=document.createDocumentFragment()// creo un fragmento vacío donde puedo insertar nodos
-//console.log(template)
+const filaHTML=document.createDocumentFragment()
+var carro={}
+//console.log(plantillaCard)
 
 const muestraElem=datosDOM =>{
   datosDOM.forEach(producto => {
     //console.log(producto)
-    template.querySelector('h5').textContent = producto.nombre//al h5 de la plantilla le pongo el nombre
-    template.querySelector('h6').textContent = producto.marca//al h5 de la plantilla le pongo el nombre
-    template.querySelector('p').textContent = producto.precio
-    template.querySelector('img').setAttribute('src',producto.img)
-    template.querySelector('button').dataset.id=producto.id//le agrego al div del boton el id producto
-    const prodTemporal=template.cloneNode(true)//se clona el arbol de nodos del objeto
+    plantillaCard.querySelector('h5').textContent = producto.nombre//al h5 de la plantilla le pongo el nombre
+    plantillaCard.querySelector('h6').textContent = producto.marca//al h5 de la plantilla le pongo el nombre
+    plantillaCard.querySelector('p').textContent = producto.precio
+    plantillaCard.querySelector('img').setAttribute('src',producto.img)
+    plantillaCard.querySelector('button').dataset.id=producto.id//le agrego al div del boton el id producto
+    const prodTemporal=plantillaCard.cloneNode(true)//se clona el arbol de nodos del objeto
     productoHTML.appendChild(prodTemporal)
   })
   lista.appendChild(productoHTML)
 }
 muestraElem(productos)
 //funciones del carrito
-var carro={
-
-//funcion para agregar al carro??
-}
-lista.addEventListener('click',evento =>{
-  agregoCarro(evento)
+lista.addEventListener('click',objetoClickeado =>{
+  pasoAlCarro(objetoClickeado)
  })
- const agregoCarro=ev =>{
-  //console.log(ev.target.tagName)
-  //console.log(ev.target.tagName==="BUTTON")
-  if(ev.target.tagName==="BUTTON"){
-    console.log(ev.target.parentElement)
+//detecto si el elemento clikeado es un boton de agregar
+//le paso al carro toda la card
+const pasoAlCarro = objClck =>{
+//console.log(objClck.target.tagName)
+//console.log(objClck.target.tagName==="BUTTON")
+  if(objClck.target.tagName==="BUTTON"){
+    meterCarro (objClck.target.parentElement)
   }
- }
+  objClck.stopPropagation()
+}
+//saco los datos desde la card
+const meterCarro = objetoRecibido =>{
+  const prod={
+    id:objetoRecibido.querySelector('button').dataset.id,
+    marca:objetoRecibido.querySelector('h6').textContent,
+    nombre:objetoRecibido.querySelector('h5').textContent,
+    precio:objetoRecibido.querySelector('p').textContent,
+    cantidad:1
+  }
+  //console.log(prod)
+  if(carro.hasOwnProperty(prod.id)){
+    prod.cantidad=carro[prod.id].cantidad + 1
+  }
+  // console.log(prod)
+  carro[prod.id]={...prod}
+  //console.log(carro)
+  muestraProd()
+}
+
+//variable carrito
+
+//escribir info en tabla
+const muestraProd = ()=> {
+  console.log(carro)
+  fila.innerHTML=''
+  Object.values(carro).forEach(producto =>{
+    plantillaFila.querySelectorAll('td')[0].textContent=producto.nombre
+    plantillaFila.querySelectorAll('td')[1].textContent=producto.marca
+    plantillaFila.querySelectorAll('td')[2].textContent=producto.precio
+    plantillaFila.querySelectorAll('td')[3].textContent=producto.cantidad
+    plantillaFila.querySelectorAll('td')[5].textContent=producto.cantidad*producto.precio
+    const clonFila=plantillaFila.cloneNode(true)
+    filaHTML.appendChild(clonFila)
+  })
+  fila.appendChild(filaHTML)
+  //console.log(plantillaFila)
+}
