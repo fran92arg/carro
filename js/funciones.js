@@ -53,7 +53,12 @@ muestraElem(productos)
 //funciones del carrito
 lista.addEventListener('click',objetoClickeado =>{
   pasoAlCarro(objetoClickeado)
- })
+})
+//para borrar de a un elemento
+fila.addEventListener('click',evento=>{
+  quitarUnProducto(evento)
+})
+
 //detecto si el elemento clikeado es un boton de agregar
 //le paso al carro toda la card
 const pasoAlCarro = objClck =>{
@@ -94,6 +99,7 @@ const muestraProd = ()=> {
     plantillaFila.querySelectorAll('td')[2].textContent=producto.precio
     plantillaFila.querySelectorAll('td')[3].textContent=producto.cantidad
     plantillaFila.querySelectorAll('td')[5].textContent=producto.cantidad*producto.precio
+    plantillaFila.querySelector('button').dataset.id=producto.id
     const clonFila=plantillaFila.cloneNode(true)
     filaHTML.appendChild(clonFila)
   })
@@ -103,19 +109,40 @@ const muestraProd = ()=> {
 }
 const muestraFondo = () =>{
   fondo.innerHTML=''
-  // if(Object.keys(carro).length === 0){
-  //   fondo.innerHTML=`<th scope="row" colspan=7>Carro vacío</th>`
-  //   //carro vacio
-  // } 
-  // Object.values(carro).forEach(p =>{
-  //   console.log(p.precio)
-  // })
-  const cantTotalDeProductos=Object.values(carro).reduce((sumador,{cantidad}) => sumador+cantidad,0)
-  const precioTotal=Object.values(carro).reduce((sumador,{precio,cantidad}) =>(sumador+(cantidad*precio)),0)
-  console.log(plantillaFondo.querySelectorAll('td'))
-  plantillaFondo.querySelectorAll('td')[0].textContent=cantTotalDeProductos
-  plantillaFondo.querySelector('span').textContent=precioTotal
-  const clonFondo=plantillaFondo.cloneNode(true)
-  fondoHTML.appendChild(clonFondo)
-  fondo.appendChild(fondoHTML)
+  if(Object.keys(carro).length === 0){
+    fondo.innerHTML=`<th scope="row" colspan=7 style="text-align:center;">Carro vacío</th>`
+    //carro vacio
+    return
+  }
+  
+    const cantTotalDeProductos=Object.values(carro).reduce((sumador,{cantidad}) => sumador+cantidad,0)
+    const precioTotal=Object.values(carro).reduce((sumador,{precio,cantidad}) =>(sumador+(cantidad*precio)),0)
+    //console.log(plantillaFondo.querySelectorAll('td'))
+    plantillaFondo.querySelectorAll('td')[0].textContent=cantTotalDeProductos
+    plantillaFondo.querySelector('span').textContent=precioTotal
+    const clonFondo=plantillaFondo.cloneNode(true)
+    fondoHTML.appendChild(clonFondo)
+    fondo.appendChild(fondoHTML)
+  
+ 
+
+  //boton
+  const vaciar=document.getElementById('vaciar')
+  vaciar.addEventListener('click', () => {
+    carro={}
+    muestraProd()
+  })
+
+}
+
+
+const quitarUnProducto = eventoRecibido =>{
+const productoDisminuir=carro[eventoRecibido.target.dataset.id]
+console.log(productoDisminuir)
+productoDisminuir.cantidad--
+if(productoDisminuir.cantidad === 0){
+  delete carro[eventoRecibido.target.dataset.id]
+}
+//carro[eventoRecibido.target.dataset.id]={...productoDisminuir}
+muestraProd()
 }

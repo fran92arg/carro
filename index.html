@@ -35,17 +35,7 @@
         <tbody id="prodCarro"></tbody>
         <tfoot>
           <tr id="fondo">
-            <!-- <td scope="row" colspan="6"></td> -->
-            <td></td>
-            <td></td>
-            <th scope="row" colspan="1">Totales</th>
-            <td>10</td>
-            <td>
-                <button class="btn btn-danger btn-sm" id="vaciar-carrito">
-                    vaciar todo
-                </button>
-            </td>
-            <td class="font-weight-bold">$ <span>5000</span></td>
+            <th scope="row" colspan=7 style="text-align:center;">Carro vacío</th>
           </tr>
         </tfoot>
       </table>
@@ -67,19 +57,6 @@
     </div>
   </template>
 
-
-  <template id="fondoTabla">
-    <th scope="row" colspan="3">Totales</th>
-    <td>10</td>
-    <td>
-        <button class="btn btn-danger btn-sm" id="vaciar-carrito">
-            vaciar todo
-        </button>
-    </td>
-    <td class="font-weight-bold">$ <span>5000</span></td>
-  </template>
-
-
   <template id="filaProd">
     <tr>
       <td>nombre</td>
@@ -87,7 +64,7 @@
       <td>precio</td>
       <td>cantidad</td>
       <td>
-        <button class="btn btn-danger btn-sm">-</button>
+        <button class="btn btn-danger btn-sm" id="disminuir">-</button>
       </td>
       <td>total</td>
 
@@ -95,7 +72,17 @@
     </tr>
   </template>
 
-
+  <template id="fondoTabla">
+    <th scope="row" colspan="3" style="text-align: right;">Totales</th>
+    <td>10</td>
+    <td>
+        <button class="btn btn-danger btn-sm" id="vaciar">
+            Eliminar todo
+        </button>
+    </td>
+    <td class="font-weight-bold">$ <span>5000</span></td>
+    
+  </template>
 
 
 
