@@ -41,7 +41,8 @@ const muestraElem=datosDOM =>{
     //console.log(producto)
     plantillaCard.querySelector('h5').textContent = producto.nombre//al h5 de la plantilla le pongo el nombre
     plantillaCard.querySelector('h6').textContent = producto.marca//al h5 de la plantilla le pongo el nombre
-    plantillaCard.querySelector('p').textContent = producto.precio
+    //plantillaCard.querySelector('p').textContent = producto.precio
+    plantillaCard.querySelector('span').textContent = producto.precio
     plantillaCard.querySelector('img').setAttribute('src',producto.img)
     plantillaCard.querySelector('button').dataset.id=producto.id//le agrego al div del boton el id producto
     const prodTemporal=plantillaCard.cloneNode(true)//se clona el arbol de nodos del objeto
@@ -74,7 +75,7 @@ const meterCarro = objetoRecibido =>{
     id:objetoRecibido.querySelector('button').dataset.id,
     marca:objetoRecibido.querySelector('h6').textContent,
     nombre:objetoRecibido.querySelector('h5').textContent,
-    precio:objetoRecibido.querySelector('p').textContent,
+    precio:objetoRecibido.querySelector('span').textContent,
     cantidad:1
   }
   //console.log(prod)
@@ -96,10 +97,12 @@ const muestraProd = ()=> {
   Object.values(carro).forEach(producto =>{
     plantillaFila.querySelectorAll('td')[0].textContent=producto.nombre
     plantillaFila.querySelectorAll('td')[1].textContent=producto.marca
-    plantillaFila.querySelectorAll('td')[2].textContent=producto.precio
-    //plantillaFila.querySelector('span').textContent=producto.precio
+    //plantillaFila.querySelectorAll('td')[2].textContent=producto.precio
+    plantillaFila.querySelectorAll('span')[0].textContent=producto.precio
     plantillaFila.querySelectorAll('td')[3].textContent=producto.cantidad
-    plantillaFila.querySelectorAll('td')[5].textContent=producto.cantidad*producto.precio
+    //plantillaFila.querySelectorAll('td')[5].textContent=producto.cantidad*producto.precio
+    plantillaFila.querySelectorAll('span')[1].textContent=producto.cantidad*producto.precio
+
     plantillaFila.querySelector('button').dataset.id=producto.id
     const clonFila=plantillaFila.cloneNode(true)
     filaHTML.appendChild(clonFila)
