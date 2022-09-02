@@ -27,11 +27,12 @@ const lista=document.getElementById('lista')//el row donde van los productos
 const plantillaCard=document.getElementById('boxProducto').content//el plantillaCard de cada producto
 const plantillaFondo=document.getElementById('fondoTabla').content
 const plantillaFila=document.getElementById('filaProd').content
-console.log(plantillaFila)
 const fila=document.getElementById('prodCarro')
+
+const productoHTML=document.createDocumentFragment()// creo un fragmento vacío donde puedo insertar nodos de produco
+const filaHTML=document.createDocumentFragment()//fragmento vacio par anodos de fila
+const fondoHTML=document.createDocumentFragment()//fragmento vacio para el fondo de la tabla
 const fondo=document.getElementById('fondo')
-const productoHTML=document.createDocumentFragment()// creo un fragmento vacío donde puedo insertar nodos
-const filaHTML=document.createDocumentFragment()
 var carro={}
 //console.log(plantillaCard)
 
@@ -61,7 +62,6 @@ const pasoAlCarro = objClck =>{
   if(objClck.target.tagName==="BUTTON"){
     meterCarro (objClck.target.parentElement)
   }
-  objClck.stopPropagation()
 }
 //saco los datos desde la card
 const meterCarro = objetoRecibido =>{
@@ -86,7 +86,7 @@ const meterCarro = objetoRecibido =>{
 
 //escribir info en tabla
 const muestraProd = ()=> {
-  console.log(carro)
+  //console.log(carro)
   fila.innerHTML=''
   Object.values(carro).forEach(producto =>{
     plantillaFila.querySelectorAll('td')[0].textContent=producto.nombre
@@ -99,4 +99,23 @@ const muestraProd = ()=> {
   })
   fila.appendChild(filaHTML)
   //console.log(plantillaFila)
+  muestraFondo()
+}
+const muestraFondo = () =>{
+  fondo.innerHTML=''
+  // if(Object.keys(carro).length === 0){
+  //   fondo.innerHTML=`<th scope="row" colspan=7>Carro vacío</th>`
+  //   //carro vacio
+  // } 
+  // Object.values(carro).forEach(p =>{
+  //   console.log(p.precio)
+  // })
+  const cantTotalDeProductos=Object.values(carro).reduce((sumador,{cantidad}) => sumador+cantidad,0)
+  const precioTotal=Object.values(carro).reduce((sumador,{precio,cantidad}) =>(sumador+(cantidad*precio)),0)
+  console.log(plantillaFondo.querySelectorAll('td'))
+  plantillaFondo.querySelectorAll('td')[0].textContent=cantTotalDeProductos
+  plantillaFondo.querySelector('span').textContent=precioTotal
+  const clonFondo=plantillaFondo.cloneNode(true)
+  fondoHTML.appendChild(clonFondo)
+  fondo.appendChild(fondoHTML)
 }

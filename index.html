@@ -35,7 +35,17 @@
         <tbody id="prodCarro"></tbody>
         <tfoot>
           <tr id="fondo">
-            <td scope="row" colspan="6">Carro vacío</td>
+            <!-- <td scope="row" colspan="6"></td> -->
+            <td></td>
+            <td></td>
+            <th scope="row" colspan="1">Totales</th>
+            <td>10</td>
+            <td>
+                <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                    vaciar todo
+                </button>
+            </td>
+            <td class="font-weight-bold">$ <span>5000</span></td>
           </tr>
         </tfoot>
       </table>
@@ -46,7 +56,7 @@
   <template id="boxProducto"> 
     <div class="col-12 mb-2 col-md-4">
       <div class="card" >
-        <img class="card-img-top" src="..." alt="Card image cap" >
+        <img class="card-img-top" src="..." alt="acá deberían salir zapatillas" >
         <div class="card-body">
           <h5>Nombre</h5>
           <h6>Marca</h6>
@@ -56,10 +66,10 @@
       </div>
     </div>
   </template>
-  <!-- poner el carrito aca -->
+
 
   <template id="fondoTabla">
-    <th scope="row" colspan="2">Total productos</th>
+    <th scope="row" colspan="3">Totales</th>
     <td>10</td>
     <td>
         <button class="btn btn-danger btn-sm" id="vaciar-carrito">
