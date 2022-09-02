@@ -14,10 +14,10 @@ productos= [
     id: 2
   },
   {
-    img:"img/puma.jpg",
-    marca:"Puma",
-    nombre:"R78",
-    precio: 16999,
+    img:"img/niken.jpg",
+    marca:"Nike",
+    nombre:"Revolution 6 Next Nature",
+    precio: 21999,
     id: 3
   },
   {
@@ -33,5 +33,13 @@ productos= [
     nombre:"Court Royale 2",
     precio: 18999,
     id: 5
+  },
+  {  
+    img:"img/nike7.jpg",
+    marca:"Nike",
+    nombre:"Nike Wildhorse 7",
+    precio:43999,
+    id:6
   }
+
 ]
