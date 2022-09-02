@@ -97,6 +97,7 @@ const muestraProd = ()=> {
     plantillaFila.querySelectorAll('td')[0].textContent=producto.nombre
     plantillaFila.querySelectorAll('td')[1].textContent=producto.marca
     plantillaFila.querySelectorAll('td')[2].textContent=producto.precio
+    //plantillaFila.querySelector('span').textContent=producto.precio
     plantillaFila.querySelectorAll('td')[3].textContent=producto.cantidad
     plantillaFila.querySelectorAll('td')[5].textContent=producto.cantidad*producto.precio
     plantillaFila.querySelector('button').dataset.id=producto.id
@@ -114,11 +115,10 @@ const muestraFondo = () =>{
     //carro vacio
     return
   }
-  
     const cantTotalDeProductos=Object.values(carro).reduce((sumador,{cantidad}) => sumador+cantidad,0)
     const precioTotal=Object.values(carro).reduce((sumador,{precio,cantidad}) =>(sumador+(cantidad*precio)),0)
     //console.log(plantillaFondo.querySelectorAll('td'))
-    plantillaFondo.querySelectorAll('td')[0].textContent=cantTotalDeProductos
+    plantillaFondo.querySelectorAll('td')[1].textContent=cantTotalDeProductos
     plantillaFondo.querySelector('span').textContent=precioTotal
     const clonFondo=plantillaFondo.cloneNode(true)
     fondoHTML.appendChild(clonFondo)
