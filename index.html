@@ -26,10 +26,10 @@
           <tr>
             <th scope="col">Artículo</th>
             <th scope="col">Marca</th>
-            <th scope="col">Precio</th>
+            <th scope="col">Precio ($AR)</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Quitar</th>
-            <th scope="col">Total</th>
+            <th scope="col">Total ($AR)</th>
           </tr>
         </thead>
         <tbody id="prodCarro"></tbody>
@@ -50,7 +50,8 @@
         <div class="card-body" align="center">
           <h5 style="text-align:center;">Nombre</h5>
           <h6 style="text-align:center;">Marca</h6>
-          <p style="text-align:center;">precio</p>
+          <!-- $<p style="text-align:center;">precio</p> -->
+          $<span>precio</span>
           <button class="btn btn-primary">Agregar</button>
         </div>
       </div>
@@ -61,7 +62,8 @@
     <tr>
       <td>nombre</td>
       <td>marca</td>
-      <td>precio</td>
+      <td>$<span>precio</span></td>
+      
       <td style="text-align: left;">cantidad</td>
       <td>
         <button class="btn btn-info btn-sm" id="disminuir">-</button>
