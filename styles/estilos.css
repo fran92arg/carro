@@ -18,3 +18,11 @@ body{
 	
 	/* height: 1.77rem; */
 }
+.centro{
+  position: absolute;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+
+  background: red;
+}
