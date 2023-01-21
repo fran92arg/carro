@@ -18,7 +18,7 @@
 //     alert("Error fetch")
 //   }
 // }
-// //invoco el fetch de datos apenas se acrga la pagina
+// //invoco el fetch de datos apenas se carga la pagina
 // document.addEventListener('DOMContentLoaded', ()=>{ //no sirve usar onload
 //   traerDatos() 
 // })
